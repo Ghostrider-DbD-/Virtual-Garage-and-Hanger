@@ -10,7 +10,8 @@
 	 Modified by GhostriderDbD to handle textures and inventory
 	 5/28/17
 */
-private["_sessionID","_vehicleDBID","_player","_VehicleInfo","_vehClass","_vehFuel","_vehDamage","_vehHitPoints","_vehPinCode","_vehTextures","_vehMoney","_vehItm","_vehWpn","_vehMag","_vehCntnr"];
+private["_sessionID","_vehicleDBID","_player","_VehicleInfo","_vehClass","_vehFuel","_vehDamage","_vehHitPoints","_vehPinCode","_vehTextures","_vehMoney","_vehItm","_vehWpn","_vehMag","_vehCntnr",
+	    "_vehPosn","_vehVector"];
 _sessionID = _this select 0;
 _vehicleDBID = (_this select 1) select 0;
 try
@@ -33,7 +34,9 @@ try
   _vehWpn = (_VehicleInfo select 0) select 10;
   _vehMag = (_VehicleInfo select 0) select 11;
   _vehCntnr = (_VehicleInfo select 0) select 12;
-  [_sessionID,[_vehClass,_vehPinCode,_vehFuel,_vehDamage,_vehHitPoints,_vehicleDBID,_vehTextures,_vehMoney,_vehItm,_vehWpn,_vehMag,_vehCntnr]] call ExileServer_VirtualGarage_network_SpawnRequestedVehicle;
+  _vehPosn = (_VehicleInfo select 0) select 13;
+  _vehVector = (_VehicleInfo select 0) select 14;
+  [_sessionID,[_vehClass,_vehPinCode,_vehFuel,_vehDamage,_vehHitPoints,_vehicleDBID,_vehTextures,_vehMoney,_vehItm,_vehWpn,_vehMag,_vehCntnr,_vehPosn,_vehVector]] call ExileServer_VirtualGarage_network_SpawnRequestedVehicle;
 } catch {
   [_exception,"Virtual Garage Retrieve Vehicle Error"] call ExileServer_VirtualGarage_utils_diagLog;
 }

@@ -10,7 +10,8 @@ disableSerialization;
 _display = uiNameSpace getVariable ["VirtualGarageDialog", displayNull];
 _StoredVehiclesList = _display displayCtrl 1500;
 StoredVehicles = _this select 0;
-
+StoredVehiclesCount = count StoredVehicles;
+diag_log format["ExileClient_VirtualGarage_network_GetStoredVehiclesResponse:: count StoredVehicles = %1 || StoredVehicles = %2", count StoredVehicles, StoredVehicles];
 _VehiclesCount = count StoredVehicles;
 for "_i" from 0 to (_VehiclesCount) -1 do {
   _className = (StoredVehicles select _i)select 1;

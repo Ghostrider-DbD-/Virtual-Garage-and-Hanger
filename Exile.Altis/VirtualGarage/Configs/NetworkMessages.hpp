@@ -32,7 +32,16 @@ class GetStoredVehiclesRequest
 		module = "VirtualGarage";
 		parameters[] = {"STRING"};
 	};
-	
+	class StoredVehicleCountRequest
+	{
+		module = "VirtualGarage";
+		parameters[] = {"STRING","STRING"};
+	};
+	class StoredVehicleCountResponse
+	{
+		module = "VirtualGarage";
+		parameters[] = {"STRING","STRING"};
+	};	
 	// Virtual Hanger Functions
 	class VH_GetStoredVehiclesRequest
 	{

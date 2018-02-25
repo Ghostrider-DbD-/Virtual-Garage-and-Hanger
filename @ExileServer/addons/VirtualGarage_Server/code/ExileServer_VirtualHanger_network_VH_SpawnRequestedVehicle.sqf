@@ -7,7 +7,8 @@
   	To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  	Description: handles spawn Vehicle Requests
 */
-private["_sessionID","_parameters","_vehicleClass","_pinCode","_vehicleFuel","_vehicleDamage","_vehicleHitPoints","_vehicleDatabaseID","_playerObject","_salesPrice","_playerMoney","_position","_vehicleObject","_responseCode"];
+private["_sessionID","_parameters","_vehicleClass","_pinCode","_vehicleFuel","_vehicleDamage","_vehicleHitPoints","_vehicleDatabaseID","_playerObject","_salesPrice","_playerMoney","_position",
+	    "_vehicleObject","_responseCode","_vehiclePosition","_vehicleVector"];
 _sessionID = _this select 0;
 _parameters = _this select 1;
 _vehicleClass = _parameters select 0;
@@ -22,6 +23,8 @@ _vehicleItems = _parameters select 8;
 _vehicleWeapons = _parameters select 9;
 _vehicleMags = _parameters select 10;
 _vehicleCntnr = _parameters select 11;
+_vehiclePosition = _parameters select 12;
+_vehicleVector = _parameters select 13;
 try
 {
 	_playerObject = _sessionID call ExileServer_system_session_getPlayerObject;
@@ -37,14 +40,27 @@ try
 	{
 		throw "The pin code is does not equal 4 chars";
 	};
-	_position = (getPos _playerObject) findEmptyPosition [10, 175, _vehicleClass];
+	/*
+	if !(typeName _vehiclePosition == "ARRAY" && count _vehiclePosition == 3) then
+	{
+		_vehiclePosition = getPos _playerObject;
+	};
+	*/
+	_position = (_vehiclePosition) findEmptyPosition [0, 15, _vehicleClass];
 	if (_position isEqualTo []) then
 	{
 			throw "Position is not defined";
 	};
 	//// Do this before spawning and configuring vehicle to avoid dupping caused by scripting errors.
 	format ["deleteVehicleFromVG:%1", _vehicleDatabaseID] call ExileServer_system_database_query_fireAndForget;	
-	_vehicleObject = [_vehicleClass, _position, (random 360), true, _pinCode] call ExileServer_object_vehicle_createPersistentVehicle;
+	_vehicleObject = [_vehicleClass, _position, 0, true, _pinCode] call ExileServer_object_vehicle_createPersistentVehicle;
+	/*
+	if !(typeName _vehicleVector == "ARRAY" && count _vehicleVector == 3) then
+	{
+		_vehicleVector = [0,0,0];
+	};		
+	*/
+	_vehicleObject setDir _vehicleVector;
 	_vehicleObject setVariable ["ExileOwnerUID", (getPlayerUID _playerObject)];
 	_vehSpawnState = getNumber (missionconfigfile >> "VirtualGarageSettings" >> "VirtualGarage_VehicleSpawnState");
 	if (_vehSpawnState == 1) then

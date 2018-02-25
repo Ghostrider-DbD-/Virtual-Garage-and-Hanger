@@ -29,10 +29,12 @@ if(_response == "true")then
         call ExileClient_VirtualGarage_VehicleDraw3DIcon;
     }];
     VirtualGarage3DIconVisible = true;
+	["SuccessTitleAndText", ["Success", format["Your vehicle has been retrieved from the virtual hanger."]]] call ExileClient_gui_toaster_addTemplateToast;
   };
 }
 else
 {
-  ["Whoops",[format["The Vehicle Could Not Be Retrieved"]]] call ExileClient_gui_notification_event_addNotification;
+  //["Whoops",[format["The Vehicle Could Not Be Retrieved"]]] call ExileClient_gui_notification_event_addNotification;
+  ["ErrorTitleAndText", ["Whoops",format["The Vehicle Could Not Be Retrieved"]]] call ExileClient_gui_toaster_addTemplateToast;
 };
 (findDisplay 0720) closeDisplay 0;

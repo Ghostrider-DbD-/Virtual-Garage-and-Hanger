@@ -29,10 +29,6 @@ _vehicleVector = _parameters select 13;
 try
 {
 	_playerObject = _sessionID call ExileServer_system_session_getPlayerObject;
-	if ((_playerObject distance _vehiclePosition) > 150) then
-	{
-		_vehiclePosition = (getPos _playerObject) findEmptyPosition [1,80, _vehicleClass]
-	};
 	if (isNull _playerObject) then
 	{
 		throw "The is no player";
@@ -45,7 +41,13 @@ try
 	{
 		throw "The pin code is does not equal 4 chars";
 	};
-
+	//  "Land_HelipadSquare_F"
+	/*
+	if !(typeName _vehiclePosition == "ARRAY" && count _vehiclePosition == 3) then
+	{
+		_vehiclePosition = getPos _playerObject;
+	};
+	*/
 	_position = (_vehiclePosition) findEmptyPosition [0, 15, _vehicleClass];
 	if (_position isEqualTo []) then
 	{

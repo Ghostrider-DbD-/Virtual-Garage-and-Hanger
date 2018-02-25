@@ -10,7 +10,8 @@
 	Modified by GhostriderDbD to store textures and inventory
 	5/28/1/
 */
-private["_sessionID","_vehNetID","_ownerUID","_vehicle","_player","_hitpoints","_vehicleHitpoints","_vehicleDBID","_pincode","_fuel","_damage","_txtr","_tabs","_itm","_wpn","_mags","_cntrs","_vehicleID"];
+private["_sessionID","_vehNetID","_ownerUID","_vehicle","_player","_hitpoints","_vehicleHitpoints","_vehicleDBID","_pincode","_fuel","_damage","_txtr","_tabs","_itm","_wpn","_mags","_cntrs",
+        "_vehicleID","_position","_vector"];
 _sessionID = _this select 0;
 _vehNetID = (_this select 1) select 0;
 _ownerUID = (_this select 1) select 1;
@@ -33,8 +34,14 @@ try
   };
   if !((owner _vehicle) isEqualTo (owner _player)) then
   {
-    throw "The player does now onw the vehicle";
+    throw "The player does not own the vehicle";
   };
+  /*
+  if (isNull (_vehicle getVariable "ExileOwnerUID")) then
+  {
+    throw "You Can Not Store None Persistent Vehicles";	
+  };
+  */
   if(_vehicle getVariable "ExileIsPersistent" isEqualTo false) then
   {
     throw "You Can Not Store None Persistent Vehicles";
@@ -57,8 +64,10 @@ try
   _wpn = weaponsItemsCargo _vehicle;
   _mags = magazinesAmmoCargo _vehicle;
   _cntns = _vehicle call ExileServer_util_getObjectContainerCargo;
-  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns] call ExileServer_system_database_query_selectFull;
-  
+  _position = getPos _vehicle;
+  _vector = getDir _vehicle; 
+  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12:%13:%14", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns,_position,_vector] call ExileServer_system_database_query_selectFull;
+
   //diag_log format[" <--> _tabs = %1 typename %2",_tabs, typeName _tabs];
   //diag_log format[" <--> _itm = %1 typename %2",_itm, typeName _itm];
   //diag_log format[" <--> _mags = %1 typename %2",_mags, typeName _mags];

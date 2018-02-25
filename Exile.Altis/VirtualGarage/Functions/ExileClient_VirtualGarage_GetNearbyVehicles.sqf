@@ -4,6 +4,7 @@
  	Author(s): Shix
     Copyright (c) 2016 Shix
  	Description: Gets a list of nearby vehicles on a flag pole with the ability to be stored in Virtual Garage.
+	Modified by Ghostrider[GRG]
 */
 private ["_display","_flag","_buildRights","_flagRadius","_nearVehicles","_nearByVehiclesList","_vehDispName","_index"];
 disableSerialization;
@@ -13,7 +14,7 @@ _buildRights = _Flag getVariable ["ExileTerritoryBuildRights", []];
 if(getPlayerUID player in _buildRights) then
 {
   _flagRadius = _flag getVariable ["ExileTerritorySize", 15];
-  _nearVehicles = nearestObjects [player, ["LandVehicle", "Air", "Ship"], _flagRadius];
+  _nearVehicles = nearestObjects [player, ["LandVehicle", "Air", "Ship"], _flagRadius*2];
   localVehicles = [];
   {
   	if (local _x) then

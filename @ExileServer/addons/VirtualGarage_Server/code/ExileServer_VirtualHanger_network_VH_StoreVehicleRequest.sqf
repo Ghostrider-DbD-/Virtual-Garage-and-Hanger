@@ -10,7 +10,8 @@
 	Modified by GhostriderDbD to store textures and inventory
 	5/28/1/
 */
-private["_sessionID","_vehNetID","_ownerUID","_vehicle","_player","_hitpoints","_vehicleHitpoints","_vehicleDBID","_pincode","_fuel","_damage","_txtr","_tabs","_itm","_wpn","_mags","_cntrs","_vehicleID"];
+private["_sessionID","_vehNetID","_ownerUID","_vehicle","_player","_hitpoints","_vehicleHitpoints","_vehicleDBID","_pincode","_fuel","_damage","_txtr","_tabs",
+		"_itm","_wpn","_mags","_cntrs","_vehicleID","_position","_vector"];
 
 _sessionID = _this select 0;
 _vehNetID = (_this select 1) select 0;
@@ -58,7 +59,9 @@ try
   _wpn = weaponsItemsCargo _vehicle;
   _mags = magazinesAmmoCargo _vehicle;
   _cntns = _vehicle call ExileServer_util_getObjectContainerCargo;
-  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns] call ExileServer_system_database_query_selectFull;
+  _position = getPos _vehicle;
+  _vector = getDir _vehicle; 
+  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12:%13:%14", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns,_position,_vector] call ExileServer_system_database_query_selectFull;
 
  deleteVehicle _vehicle;
 

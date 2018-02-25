@@ -10,7 +10,8 @@
 diag_log "function ExileClient_AccessHanger called";
  if (ExileClientPlayerIsInCombat) then
 {
-	  ["Whoops",["You're in combat!"]] call ExileClient_gui_notification_event_addNotification;
+	  //["Whoops",["You're in combat!"]] call ExileClient_gui_notification_event_addNotification;
+	  ["ErrorTitleAndText", ["Whoops",format["You're in combat!"]]] call ExileClient_gui_toaster_addTemplateToast;
 } else {
 	  createDialog "VirtualHangerDialog";
 };

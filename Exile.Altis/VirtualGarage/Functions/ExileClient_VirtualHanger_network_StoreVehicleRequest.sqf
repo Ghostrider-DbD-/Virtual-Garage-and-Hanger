@@ -21,5 +21,6 @@ if (true) then {
 else
 {
   (findDisplay 0720) closeDisplay 0;
-  ["Whoops",[format["You Already Have Too Many Vehicles For Your Flag Level"]]] call ExileClient_gui_notification_event_addNotification;
+  //["Whoops",[format["You Already Have Too Many Vehicles For Your Flag Level"]]] call ExileClient_gui_notification_event_addNotification;
+  ["ErrorTitleAndText", ["Whoops",format["You have already stored the maximum number of vehicles allowed for your flag level!"]]] call ExileClient_gui_toaster_addTemplateToast;
 }

@@ -15,12 +15,14 @@ if(_playerHasToBeOnFlag == 1)then{
   {
     if (ExileClientPlayerIsInCombat) then
     {
-          ["Whoops",["You're in combat!"]] call ExileClient_gui_notification_event_addNotification;
+          //["Whoops",["You're in combat!"]] call ExileClient_gui_notification_event_addNotification;
+		  ["ErrorTitleAndText", ["Whoops",format["You're in combat!"]]] call ExileClient_gui_toaster_addTemplateToast;
     } else {
           createDialog "VirtualGarageDialog";
     }
   } else {
-    ["Whoops",["You Do Not have access to this Garage"]] call ExileClient_gui_notification_event_addNotification;
+    //["Whoops",["You Do Not have access to this Garage"]] call ExileClient_gui_notification_event_addNotification;
+	["ErrorTitleAndText", ["Whoops",format["You Do Not have access to this Garage"]]] call ExileClient_gui_toaster_addTemplateToast;
   };
 }
 else
