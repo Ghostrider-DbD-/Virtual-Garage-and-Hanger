@@ -28,7 +28,9 @@ Merge the contents of config.h with your config.cpp
 
 Merge the contents of description.ext with your description.ext
 
-Merget the contents of init.sqf into your current init.sqf.
+Merge the contents of init.sqf into your current init.sqf.
+
+An example of virtual hanger terminals and spawn points I use is included.
 
 Server:
 
