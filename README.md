@@ -16,9 +16,13 @@ Description: modified to add ability to store inventory, skins, and a nickname
 	     
 Requires: you must run a 64 bit Exile server using extDB3.
 
+https://github.com/BrettNordin/Exile
+
 Difficulty: significant expertise with scripting required.
 
 Installation:
+
+[This one is a bit complicated, be sure to make backups before starting]
 
 Mission:
 
@@ -28,9 +32,17 @@ Merge the contents of config.h with your config.cpp
 
 Merge the contents of description.ext with your description.ext
 
-Merget the contents of init.sqf into your current init.sqf.
+Merge the contents of init.sqf into your current init.sqf.
+
+An example of virtual hanger terminals and spawn points I use is included.
 
 Server:
+
+pack the virtual_garage folder and put virtual_garage.pbo in @exileserver\addons
+
+Run \database\virtual_garage.sql to add the virtual garage table to the database for your server AFTER making a backup.
+
+Merge @ExileServer\extDB\sql_custom_v2\exile.ini with your existing extDB3 exile.ini (be sure to make a backup first).
 
 
   
