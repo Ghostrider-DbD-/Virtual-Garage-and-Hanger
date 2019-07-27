@@ -19,6 +19,7 @@ Requires: you must run a 64 bit Exile server using extDB3.
 Difficulty: significant expertise with scripting required.
 
 Installation:
+
 Mission:
 
 Merge the contents of the addons folder with your mission.pbo.
@@ -26,6 +27,11 @@ Merge the contents of the addons folder with your mission.pbo.
 Merge the contents of config.h with your config.cpp
 
 Merge the contents of description.ext with your description.ext
+
+Merget the contents of init.sqf into your current init.sqf.
+
+Server:
+
 
   
   
