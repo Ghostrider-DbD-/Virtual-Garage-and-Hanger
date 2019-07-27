@@ -32,6 +32,12 @@ Merget the contents of init.sqf into your current init.sqf.
 
 Server:
 
+pack the virtual_garage folder and put virtual_garage.pbo in @exileserver\addons
+
+Run \database\virtual_garage.sql to add the virtual garage table to the database for your server AFTER making a backup.
+
+Merge @ExileServer\extDB\sql_custom_v2\exile.ini with your existing extDB3 exile.ini (be sure to make a backup first).
+
 
   
   
