@@ -16,6 +16,8 @@ Description: modified to add ability to store inventory, skins, and a nickname
 	     
 Requires: you must run a 64 bit Exile server using extDB3.
 
+https://github.com/BrettNordin/Exile
+
 Difficulty: significant expertise with scripting required.
 
 Installation:
