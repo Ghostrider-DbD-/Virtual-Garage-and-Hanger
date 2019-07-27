@@ -20,6 +20,8 @@ Difficulty: significant expertise with scripting required.
 
 Installation:
 
+[This one is a bit complicated, be sure to make backups before starting]
+
 Mission:
 
 Merge the contents of the addons folder with your mission.pbo.
