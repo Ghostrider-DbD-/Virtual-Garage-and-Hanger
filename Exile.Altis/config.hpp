@@ -1,4 +1,8 @@
 
+	class CfgInteractionMenus
+{
+
+	#include "addons\VirtualGarage\Configs\Interactions.hpp"
 	class Laptop
 	{
 		targetType = 2;
@@ -27,6 +31,7 @@
 			*/
 		};
 	};
+};
 
 class CfgNetworkMessages {
 	#include "VirtualGarage\Configs\NetworkMessages.hpp"	
