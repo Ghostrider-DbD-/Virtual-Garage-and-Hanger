@@ -7,11 +7,10 @@
     To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  	  Description: handles retrieve vehicle requests
 	  
-	 Modified by GhostriderDbD to handle textures and inventory
-	 5/28/17
+	Modified by GhostriderDbD to store money, textures, inventory and a nickname
 */
 private["_sessionID","_vehicleDBID","_player","_VehicleInfo","_vehClass","_vehFuel","_vehDamage","_vehHitPoints","_vehPinCode","_vehTextures","_vehMoney","_vehItm","_vehWpn","_vehMag","_vehCntnr",
-	    "_vehPosn","_vehVector"];
+	    "_vehPosn","_vehVector","_vehNickname"];
 _sessionID = _this select 0;
 _vehicleDBID = (_this select 1) select 0;
 try
@@ -22,7 +21,9 @@ try
     throw "No player was found from the session ID";
   };
   _VehicleInfo = format ["RetrieveVehicle:%1", _vehicleDBID] call ExileServer_system_database_query_selectFull;
-  //diag_log format["ExileServer_VirtualGarage_network_RetrieveVehicleRequest::  _VehicleInfo = %1",_VehicleInfo];
+  //(_VehicleInfo select 0) params["_vehClass","_accountUID","_vehFuel","_vehDamage","_vehHitPoints","_vehPinCode","_vehTextures","_vehMoney","_vehItm","_vehWpn","_vehMag","_vehCntnr","_vehPosn","_vehVector","_vehNickname"];
+  diag_log format["ExileServer_VirtualGarage_network_RetrieveVehicleRequest::  _VehicleInfo = %1",_VehicleInfo];
+  
   _vehClass = (_VehicleInfo select 0) select 1;
   _vehFuel = (_VehicleInfo select 0) select 3;
   _vehDamage = (_VehicleInfo select 0) select 4;
@@ -36,7 +37,9 @@ try
   _vehCntnr = (_VehicleInfo select 0) select 12;
   _vehPosn = (_VehicleInfo select 0) select 13;
   _vehVector = (_VehicleInfo select 0) select 14;
-  [_sessionID,[_vehClass,_vehPinCode,_vehFuel,_vehDamage,_vehHitPoints,_vehicleDBID,_vehTextures,_vehMoney,_vehItm,_vehWpn,_vehMag,_vehCntnr,_vehPosn,_vehVector]] call ExileServer_VirtualGarage_network_SpawnRequestedVehicle;
+  _vehNickname = (_VehicleInfo select 0) select 15;
+  
+  [_sessionID,[_vehClass,_vehPinCode,_vehFuel,_vehDamage,_vehHitPoints,_vehicleDBID,_vehTextures,_vehMoney,_vehItm,_vehWpn,_vehMag,_vehCntnr,_vehPosn,_vehVector,_vehNickname]] call ExileServer_VirtualGarage_network_SpawnRequestedVehicle;
 } catch {
   [_exception,"Virtual Garage Retrieve Vehicle Error"] call ExileServer_VirtualGarage_utils_diagLog;
 }

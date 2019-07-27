@@ -19,7 +19,7 @@ if(getPlayerUID player in _buildRights) then
   {
   	if (local _x) then
   	{
-      if (alive _x) then
+      if (alive _x) then  //  only persistant vehicles will be included
       {
         localVehicles pushBack _x;
       };

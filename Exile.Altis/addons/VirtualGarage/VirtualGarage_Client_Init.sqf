@@ -30,6 +30,13 @@ forEach
   ['ExileClient_VirtualGarage_onStoredVehiclesListSelChanged', 'addons\VirtualGarage\Functions\ExileClient_VirtualGarage_onStoredVehiclesListSelChanged.sqf'],
   ['ExileClient_VirtualGarage_onVirtualGarageDialogLoad', 'addons\VirtualGarage\Functions\ExileClient_VirtualGarage_onVirtualGarageDialogLoad.sqf'],
   ['ExileClient_VirtualGarage_VehicleDraw3DIcon', 'addons\VirtualGarage\Functions\ExileClient_VirtualGarage_VehicleDraw3DIcon.sqf'],
+
+  ['ExileClient_VirtualGarage_updateVehicleName','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_updateVehicleName.sqf'],
+  ['ExileClient_VirturalGarage_hideVehicleNameEditor','addons\VirtualGarage\Functions\ExileClient_VirturalGarage_hideVehicleNameEditor.sqf'],
+  ['ExlieClient_VirtualGarage_showVehiclNameEditor','addons\VirtualGarage\Functions\ExlieClient_VirtualGarage_showVehiclNameEditor.sqf'],
+  ['ExileClient_VirtualGarage_setVehicleNickname','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_setVehicleNickname.sqf'],
+  ['ExileClient_VirtualGarage_network_setVehicleNicknameRequest','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_network_setVehicleNicknameRequest.sqf'],
+  ['ExileClient_VirtualGarage_network_setVehicleNicknameResponse','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_network_setVehicleNicknameResponse.sqf'],
   
   //  Additional Functions for Virtual Hanger
   ['ExileClient_VirtualHanger_GetNearbyVehicles', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_GetNearbyVehicles.sqf'],
@@ -42,6 +49,13 @@ forEach
   ['ExileClient_VirtualHanger_onStoredVehiclesListSelChanged', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_onStoredVehiclesListSelChanged.sqf'],     //  
   ['ExileClient_VirtualHanger_network_VH_StoreVehicleResponse', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_VH_StoreVehicleResponse.sqf'],  
   ['ExileClient_VirtualHanger_network_VH_RetrieveVehicleResponse', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_VH_RetrieveVehicleResponse.sqf'],   
-  ['ExileClient_VirtualHanger_AccessHanger', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_AccessHanger.sqf']
+  ['ExileClient_VirtualHanger_AccessHanger', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_AccessHanger.sqf'],
+    
+  ['ExileClient_VirtualHanger_updateVehicleName','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_updateVehicleName.sqf'],
+  ['ExileClient_VirturalHanger_hideVehicleNameEditor','addons\VirtualGarage\Functions\ExileClient_VirturalHanger_hideVehicleNameEditor.sqf'],
+  ['ExlieClient_VirtualHanger_showVehiclNameEditor','addons\VirtualGarage\Functions\ExlieClient_VirtualHanger_showVehiclNameEditor.sqf'],
+  ['ExileClient_VirtualHanger_setVehicleNickname','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_setVehicleNickname.sqf'],
+  ['ExileClient_VirtualHanger_network_setVehicleNicknameRequest','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_setVehicleNicknameRequest.sqf'],
+  ['ExileClient_VirtualHanger_network_VH_setVehicleNicknameResponse','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_VH_setVehicleNicknameResponse.sqf']
 	
 ];

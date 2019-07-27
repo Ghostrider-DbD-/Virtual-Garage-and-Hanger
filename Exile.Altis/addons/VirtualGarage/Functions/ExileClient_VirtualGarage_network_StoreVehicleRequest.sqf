@@ -7,6 +7,7 @@
 	Modified by Ghostrider[GRG]
 */
 private ["_display","_flag","_ownerUID","_level","_vehicleLimit","_storedVehiclesCount","_NearByVehiclesList","_selectedSel","_VehNetId"];
+params ["_control", "_selectedIndex"];
 disableSerialization;
 _display = uiNameSpace getVariable ["VirtualGarageDialog", displayNull];
 _flag = nearestObject [player, "Exile_Construction_Flag_Static"];
@@ -21,21 +22,15 @@ if (_configsAreArray) then
 } else {
 	VG_vehicleLimit = 10 + (_level * 3);
 };
-//_msg = format["_configsAreArray = %3 || _vehiclesLimit = %1 || count StoredVehicles = %2",_VG_flagLimits, count StoredVehicles, _configsAreArray];
-//systemChat format["_myArray = %1",_myArray];
-//systemChat _msg;
-//diag_log _msg;
 _storedVehiclesCount = count StoredVehicles;
-
 if (_storedVehiclesCount < VG_vehicleLimit) then {
   _NearByVehiclesList = _display displayCtrl 1501;
   _selectedSel = lbCurSel _NearByVehiclesList;
   _VehNetId = _NearByVehiclesList lbData _selectedSel;
-  ["StoreVehicleRequest",[_VehNetId,_ownerUID]] call ExileClient_system_network_send;
+  ["StoreVehicleRequest",[_VehNetId,_ownerUID,VG_vehicleName]] call ExileClient_system_network_send;
 }
 else
 {
   (findDisplay 0720) closeDisplay 0;
-  //["Whoops",[format["You Already Have Too Many Vehicles For Your Flag Level"]]] call ExileClient_gui_notification_event_addNotification;
   ["ErrorTitleAndText", ["Whoops",format["You Already Have Too Many Vehicles For Your Flag Level"]]] call ExileClient_gui_toaster_addTemplateToast;  
-}
+};

@@ -22,11 +22,13 @@ forEach
 [
     ['ExileServer_VirtualGarage_network_GetStoredVehiclesRequest','VirtualGarage_Server\code\ExileServer_VirtualGarage_network_GetStoredVehiclesRequest.sqf'],
     ['ExileServer_VirtualGarage_network_RetrieveVehicleRequest','VirtualGarage_Server\code\ExileServer_VirtualGarage_network_RetrieveVehicleRequest.sqf'],
+    ['ExileServer_VirtualGarage_network_setVehicleNicknameRequest','VirtualGarage_Server\code\ExileServer_VirtualGarage_network_setVehicleNicknameRequest.sqf'],
     ['ExileServer_VirtualGarage_network_SpawnRequestedVehicle','VirtualGarage_Server\code\ExileServer_VirtualGarage_network_SpawnRequestedVehicle.sqf'],
     ['ExileServer_VirtualGarage_network_StoreVehicleRequest','VirtualGarage_Server\code\ExileServer_VirtualGarage_network_StoreVehicleRequest.sqf'],
     ['ExileServer_VirtualGarage_utils_diagLog','VirtualGarage_Server\code\ExileServer_VirtualGarage_utils_diagLog.sqf'],
     ['ExileServer_VirtualHanger_network_VH_GetStoredVehiclesRequest','VirtualGarage_Server\code\ExileServer_VirtualHanger_network_VH_GetStoredVehiclesRequest.sqf'],
     ['ExileServer_VirtualHanger_network_VH_RetrieveVehicleRequest','VirtualGarage_Server\code\ExileServer_VirtualHanger_network_VH_RetrieveVehicleRequest.sqf'],
+    ['ExileServer_VirtualHanger_network_setVehicleNicknameRequest','VirtualGarage_Server\code\ExileServer_VirtualHanger_network_setVehicleNicknameRequest.sqf'],    
     ['ExileServer_VirtualHanger_network_VH_SpawnRequestedVehicle','VirtualGarage_Server\code\ExileServer_VirtualHanger_network_VH_SpawnRequestedVehicle.sqf'],
     ['ExileServer_VirtualHanger_network_VH_StoreVehicleRequest','VirtualGarage_Server\code\ExileServer_VirtualHanger_network_VH_StoreVehicleRequest.sqf']	
 ];

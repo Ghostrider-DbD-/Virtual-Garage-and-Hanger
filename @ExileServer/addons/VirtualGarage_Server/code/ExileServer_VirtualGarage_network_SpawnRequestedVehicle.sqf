@@ -6,12 +6,19 @@
   	This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
   	To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  	Description: handles spawn Vehicle Requests
+	Modified by GhostriderDbD to store money, textures, inventory and a nickname	 
 */
 private["_sessionID","_parameters","_vehicleClass","_pinCode","_vehicleFuel","_vehicleDamage","_vehicleHitPoints","_vehicleDatabaseID","_playerObject","_salesPrice","_playerMoney",
-		"_position","_vehicleObject","_responseCode","_vehiclePosition","_vehicleVector"];
+		"_position","_vehicleObject","_responseCode","_vehiclePosition","_vehicleVector","_vehNickname"];
+params["_sessionID","_parameters"];
 
-_sessionID = _this select 0;
-_parameters = _this select 1;
+/*
+_parameters params["_vehicleClass","_pinCode","_vehicleFuel","_vehicleDamage","_vehicleHitPoints",
+	"_vehicleDatabaseID","_vehicleTextures","_vehicleMoney","_vehicleItems","_vehicleWeapons","_vehicleMags","_vehicleCntnr","_vehiclePosition","_vehicleVector","_vehNickname"];
+*/
+//{diag_log format["_parameter %1 = %2",_forEachIndex,_x]}forEach _parameters;
+//_sessionID = _this select 0;
+//_parameters = _this select 1;
 _vehicleClass = _parameters select 0;
 _pinCode = _parameters select 1;
 _vehicleFuel = _parameters select 2;
@@ -20,12 +27,15 @@ _vehicleHitPoints = _parameters select 4;
 _vehicleDatabaseID = _parameters select 5;
 _vehicleTextures = _parameters select 6;
 _vehicleMoney = _parameters select 7;
+//diag_log format["ExileServer_VirtualGarage_network_SpawnRequestedVehicle: _vehicleMoney = %1",_vehicleMoney];
 _vehicleItems = _parameters select 8;
 _vehicleWeapons = _parameters select 9;
 _vehicleMags = _parameters select 10;
 _vehicleCntnr = _parameters select 11;
 _vehiclePosition = _parameters select 12;
 _vehicleVector = _parameters select 13;
+_vehNickName = _parameters select 14;
+//diag_log format["ExileServer_VirtualGarage_network_SpawnRequestedVehicle: _vehNickName = %1",_vehNickName];
 try
 {
 	_playerObject = _sessionID call ExileServer_system_session_getPlayerObject;
@@ -63,6 +73,7 @@ try
 	*/
 	_vehicleObject setDir _vehicleVector;
 	_vehicleObject setVariable ["ExileOwnerUID", (getPlayerUID _playerObject)];
+	_vehicleObject setVariable ["GRG_nickName",_vehNickname,true];
 	_vehSpawnState = getNumber (missionconfigfile >> "VirtualGarageSettings" >> "VirtualGarage_VehicleSpawnState");
 	if (_vehSpawnState == 1) then
 	{
@@ -83,7 +94,7 @@ try
 	};
 	_GivePlayerPinCode = getNumber (missionconfigfile >> "VirtualGarageSettings" >> "VirtualGarage_GivePlayerPicCode");
 	//diag_log format["ExileServer_VirtualGarage_network_SpawnRequestedVehicle:: _vehicleMoney = %1",_vehicleMoney];
-	_vehicleObject setVariable["ExileMoney",_vehicleMoney];
+	_vehicleObject setVariable["ExileMoney",_vehicleMoney,true];
 	[_vehicleObject, _vehicleItems] call ExileServer_util_fill_fillItems;
 	[_vehicleObject, _vehicleMags] call ExileServer_util_fill_fillMagazines;
 	[_vehicleObject, _vehicleWeapons] call ExileServer_util_fill_fillWeapons;

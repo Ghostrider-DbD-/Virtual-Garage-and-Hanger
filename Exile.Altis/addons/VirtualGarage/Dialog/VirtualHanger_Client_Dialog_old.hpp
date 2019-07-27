@@ -162,7 +162,7 @@ class VirtualHangerDialog
         {
         	idc = 1106;
 
-        	text = "<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>STORE</t>"; //--- ToDo: Localize;
+        	text = "<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>STORE</t>"; 
         	x = 0.407212 * safezoneW + safezoneX;
         	y = 0.445 * safezoneH + safezoneY;
         	w = 0.185671 * safezoneW;
@@ -184,7 +184,6 @@ class VirtualHangerDialog
         class VirtHangerRetrieveBtnText: VirtGarageRscStructuredText
         {
         	idc = 1107;
-
         	text = "<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>RETRIEVE</t>"; //--- ToDo: Localize;
         	x = 0.407212 * safezoneW + safezoneX;
         	y = 0.533 * safezoneH + safezoneY;
@@ -204,5 +203,63 @@ class VirtualHangerDialog
         	colorBackground[] = {0,0,0,0};
           onButtonClick = "call ExileClient_VirtualHanger_network_RetrieveVehicleRequest";
         };
+		class enterVehicleName: VirtGarageRscEdit
+		{
+			idc = 1400;
+			x = 0.480312 * safezoneW + safezoneX;
+			y = 0.486 * safezoneH + safezoneY;
+			w = 0.18375 * safezoneW;
+			h = 0.042 * safezoneH;
+			text = "";
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0.1};
+			onKeyUp = "call ExileClient_VirtualHanger_updateVehicleName";
+		};
+		class editLabel: VirtGarageRscStructuredText
+		{
+			idc = 1020;
+			text = "Enter Nick Name"; 
+			x = 0.39 * safezoneW + safezoneX;
+			y = 0.486 * safezoneH + safezoneY;
+			w = 0.0984375 * safezoneW;
+			h = 0.056 * safezoneH;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+		};	
+		class displayVehicleName: VirtGarageRscStructuredText
+		{
+			idc = 1401;
+			x = 0.480312 * safezoneW + safezoneX;
+			y = 0.486 * safezoneH + safezoneY;
+			w = 0.18375 * safezoneW;
+			h = 0.042 * safezoneH;
+			text = "";
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+			//onKeyUp = "call VG_client_update_vehicleName";
+		};
+		class displayVehiclNameLabel: VirtGarageRscStructuredText
+		{
+			idc = 1021;
+			text = "Nick Name"; 
+			x = 0.39 * safezoneW + safezoneX;
+			y = 0.486 * safezoneH + safezoneY;
+			w = 0.0984375 * safezoneW;
+			h = 0.056 * safezoneH;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+		};			
+		class selectNickName: VirtGarageRscButton
+		{
+			idc = 1601;
+			text = "Set Vehicle Nickname"; //--- ToDo: Localize;
+			x = 0.479375 * safezoneW + safezoneX;
+			y = 0.533 * safezoneH + safezoneY;
+			w = 0.128906 * safezoneW;
+			h = 0.033 * safezoneH;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};		
+			onButtonClick = "call ExileClient_VirtualHanger_setVehicleNickname";	
+		};		
     };
 };

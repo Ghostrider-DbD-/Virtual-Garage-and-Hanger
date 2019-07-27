@@ -22,7 +22,7 @@ _progressBar = (_display displayCtrl 1900);
 
 _curLoadingBarPos = 0;
 while {_curLoadingBarPos < 1} do {
-  _curLoadingBarPos = _curLoadingBarPos + 0.01;
+  _curLoadingBarPos = _curLoadingBarPos + 0.1;
   _progressBar progressSetPosition _curLoadingBarPos;
   uiSleep 0.01;
 };

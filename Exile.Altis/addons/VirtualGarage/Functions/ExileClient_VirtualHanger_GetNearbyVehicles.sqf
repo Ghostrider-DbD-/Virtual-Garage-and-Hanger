@@ -11,12 +11,12 @@ disableSerialization;
 _display = uiNameSpace getVariable ["VirtualHangerDialog", displayNull];
 _searchRadius = 75;
 _nearVehicles = nearestObjects [player, ["Air"], _searchRadius];
-
+//diag_log format["nearVehicles = %1",_nearVehicles];
 localVehicles = [];
 {
 	if (local _x) then
   	{
-      if (alive _x) then
+      if (alive _x) then  //  only persistant vehicles will be included
       {
         localVehicles pushBack _x;
       };

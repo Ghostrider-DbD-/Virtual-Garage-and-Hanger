@@ -1,21 +1,22 @@
 /*
 
- 	Name: .sqf
+ 	Name: ExileServer_VirtualGarage_network_StoreVehicleRequest.sqf
  	Author(s): Shix
   Copyright (c) 2016 Shix
   This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
   To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  	Description: Handles store Vehicle Requests
 	
-	Modified by GhostriderDbD to store textures and inventory
-	5/28/1/
+	Modified by GhostriderDbD to store money, textures, inventory and a nickname
 */
 private["_sessionID","_vehNetID","_ownerUID","_vehicle","_player","_hitpoints","_vehicleHitpoints","_vehicleDBID","_pincode","_fuel","_damage","_txtr","_tabs","_itm","_wpn","_mags","_cntrs",
-        "_vehicleID","_position","_vector"];
+        "_vehicleID","_position","_vector","_nickName"];
+
 _sessionID = _this select 0;
 _vehNetID = (_this select 1) select 0;
 _ownerUID = (_this select 1) select 1;
-
+_nickName = (_this select 1) select 2;
+//diag_log format["ExileServer_VirtualGarage_network_StoreVehicleRequest: _nickName = %1",_nickName];
 try
 {
   _vehicle = objectFromNetId _vehNetID;
@@ -42,7 +43,7 @@ try
     throw "You Can Not Store None Persistent Vehicles";	
   };
   */
-  if(_vehicle getVariable "ExileIsPersistent" isEqualTo false) then
+  if(_vehicle getVariable ["ExileIsPersistent",false] isEqualTo false) then
   {
     throw "You Can Not Store None Persistent Vehicles";
   };
@@ -56,6 +57,7 @@ try
   };
   _vehicleDBID = _vehicle getVariable ["ExileDatabaseID",0];
   _pincode = _vehicle getVariable ["ExileAccessCode",""];
+  //_nickName = _vehicle getVariable ["GRG_nickName",""];
   _fuel = fuel _vehicle;
   _damage = damage _vehicle;
   _txtr = getObjectTextures _vehicle;
@@ -66,7 +68,7 @@ try
   _cntns = _vehicle call ExileServer_util_getObjectContainerCargo;
   _position = getPos _vehicle;
   _vector = getDir _vehicle; 
-  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12:%13:%14", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns,_position,_vector] call ExileServer_system_database_query_selectFull;
+  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12:%13:%14:%15", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns,_position,_vector,_nickName] call ExileServer_system_database_query_selectFull;
 
   //diag_log format[" <--> _tabs = %1 typename %2",_tabs, typeName _tabs];
   //diag_log format[" <--> _itm = %1 typename %2",_itm, typeName _itm];

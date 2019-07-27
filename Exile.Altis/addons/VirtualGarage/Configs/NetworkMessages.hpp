@@ -24,7 +24,7 @@ class GetStoredVehiclesRequest
 	class StoreVehicleRequest
 	{
 		module = "VirtualGarage";
-		parameters[] = {"STRING","STRING"};
+		parameters[] = {"STRING","STRING","STRING"};
 	};
 
 	class StoreVehicleResponse
@@ -42,6 +42,16 @@ class GetStoredVehiclesRequest
 		module = "VirtualGarage";
 		parameters[] = {"STRING","STRING"};
 	};	
+	class setVehicleNickNameRequest 
+	{
+		module = "VirtualGarage";
+		parameters[] = {"OBJECT","STRING"};
+	};
+	class setVehicleNicknameResponse 
+	{
+		module = "VirtualGarage";
+		parameters[] = {"ARRAY"};
+	};
 	// Virtual Hanger Functions
 	class VH_GetStoredVehiclesRequest
 	{
@@ -69,7 +79,7 @@ class GetStoredVehiclesRequest
 	class VH_StoreVehicleRequest
 	{
 		module = "VirtualHanger";
-		parameters[] = {"STRING","STRING"};
+		parameters[] = {"STRING","STRING","STRING"};
 	};
 
 	class VH_StoreVehicleResponse
@@ -77,3 +87,9 @@ class GetStoredVehiclesRequest
 		module = "VirtualHanger";
 		parameters[] = {"STRING"};
 	};
+
+	class VH_setVehicleNicknameResponse 
+	{
+		module = "VirtualGarage";
+		parameters[] = {"ARRAY"};
+	};	
