@@ -1,5 +1,12 @@
+class CfgExileCustomCode 
+{
+	//  GRG Vehicle Nicknames
+	ExileServer_object_vehicle_database_insert = "GRG_Exile_Server_Overrides\ExileServer_object_vehicle_database_insert.sqf";
+	ExileServer_object_vehicle_database_update = "GRG_Exile_Server_Overrides\ExileServer_object_vehicle_database_update.sqf";	
+};
 
-	class CfgInteractionMenus
+
+class CfgInteractionMenus
 {
 
 	#include "addons\VirtualGarage\Configs\Interactions.hpp"
