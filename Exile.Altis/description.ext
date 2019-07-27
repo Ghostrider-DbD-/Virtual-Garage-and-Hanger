@@ -2,6 +2,6 @@
 //////////////////////
 //Virtual Garage
 //////////////////////
-#include "VirtualGarage\Dialog\VirtualGarage_Client_Defines.hpp"
-#include "VirtualGarage\Dialog\VirtualGarage_Client_Dialog.hpp"
-#include "VirtualGarage\Dialog\VirtualHanger_Client_Dialog.hpp"
+#include "addons\VirtualGarage\Dialog\VirtualGarage_Client_Defines.hpp"
+#include "addons\VirtualGarage\Dialog\VirtualGarage_Client_Dialog.hpp"
+#include "addons\VirtualGarage\Dialog\VirtualHanger_Client_Dialog.hpp"
