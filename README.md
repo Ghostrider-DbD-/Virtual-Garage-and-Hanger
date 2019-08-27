@@ -34,6 +34,8 @@ Merge the contents of description.ext with your description.ext
 
 Merge the contents of init.sqf into your current init.sqf.
 
+Copy the folder with overwrites of ExileServer files into your mission folder.
+
 An example of virtual hanger terminals and spawn points I use is included.
 
 Server:
