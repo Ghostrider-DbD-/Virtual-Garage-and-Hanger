@@ -2,8 +2,8 @@
 
  	Name: VirtualGarage_Client_Dialog.hpp
  	Author(s): Shix
-  Copyright (c) 2016 Shix
-  Description: Dialog file for Virtual Garage
+  	Copyright (c) 2016 Shix
+  	Description: Dialog file for Virtual Hanger
 	Modified by Ghostrider-GRG
 */
 class VirtualHangerDialog
@@ -171,7 +171,7 @@ class VirtualHangerDialog
         {
         	idc = 1106;
 			// SOTRE
-        	text = "<t color='#00b2cd' font='OrbitronLight' size='1.5' valign='middle' align='center' shadow='0'>STORE</t>"; //--- ToDo: Localize;
+        	text = "<t color='#00b2cd' font='OrbitronLight' size='1.5' valign='middle' align='center' shadow='0'>STORE</t>";  
 			x = 0.57 * safezoneW + safezoneX;
 			y = 0.588 * safezoneH + safezoneY;
 			w = 0.1 * safezoneW;
@@ -190,14 +190,14 @@ class VirtualHangerDialog
 			//colorShadow[]	= {0.1,0.1,0.1,0.1};
             colorBackgroundActive[] ={1,1,1,0.05};
             colorFocused[] ={1,1,1,0};			
-          	onButtonClick = "call ExileClient_VirtualHanger_network_StoreVehicleRequest";
+          	onButtonClick = "call ExileClient_VirtualHanger_network_VH_StoreVehicleRequest";
         };
 		
         class VirtGarageRetrieveBtnText: VirtGarageRscStructuredText
         {
         	idc = 1107;
 
-        	text = "<t color='#00b2cd' font='OrbitronLight' size='1.5' valign='middle' align='center' shadow='0'>RETRIEVE</t>"; //--- ToDo: Localize;
+        	text = "<t color='#00b2cd' font='OrbitronLight' size='1.5' valign='middle' align='center' shadow='0'>RETRIEVE</t>";  
 			//text = "RETRIEVE";
 			x = 0.36 * safezoneW + safezoneX;
 			y = 0.588 * safezoneH + safezoneY;
@@ -216,7 +216,7 @@ class VirtualHangerDialog
 			//colorShadow[] = {0.1,0.1,0.1,0.1};
             colorBackgroundActive[] ={1,1,1,0.05};
             colorFocused[] ={1,1,1,0};			
-            onButtonClick = "call ExileClient_VirtualHanger_network_RetrieveVehicleRequest";
+            onButtonClick = "call ExileClient_VirtualHanger_network_VH_RetrieveVehicleRequest";
         };
 		class enterVehicleName: VirtGarageRscEdit
 		{
@@ -266,7 +266,7 @@ class VirtualHangerDialog
 		class selectNickName: VirtGarageRscButton
 		{
 			idc = 1601;
-			text = "Set Vehicle Nickname"; //--- ToDo: Localize;
+			text = "Set Vehicle Nickname";  
 			x = 0.55 * safezoneW + safezoneX;
 			y = 0.533 * safezoneH + safezoneY;
 			w = 0.128906 * safezoneW;
@@ -281,7 +281,7 @@ class VirtualHangerDialog
 		class directions: VirtGarageRscStructuredText
 		{
 			idc = 1103;
-			text = "Select a Vehicle to Store or Pull from the Hanger"; //--- ToDo: Localize;
+			text = "Select a Vehicle to Store or Pull from the Hanger";  
 			x = 0.427812 * safezoneW + safezoneX;
 			y = 0.434 * safezoneH + safezoneY;
 			w = 0.221719 * safezoneW;

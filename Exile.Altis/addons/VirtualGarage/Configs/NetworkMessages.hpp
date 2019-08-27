@@ -52,6 +52,7 @@ class GetStoredVehiclesRequest
 		module = "VirtualGarage";
 		parameters[] = {"ARRAY"};
 	};
+	
 	// Virtual Hanger Functions
 	class VH_GetStoredVehiclesRequest
 	{
@@ -91,5 +92,47 @@ class GetStoredVehiclesRequest
 	class VH_setVehicleNicknameResponse 
 	{
 		module = "VirtualGarage";
+		parameters[] = {"ARRAY"};
+	};	
+
+	// Virtual BoatRack Functions
+	class VBR_GetStoredVehiclesRequest
+	{
+		module = "VirtualBoatRack";
+		parameters[] = {"STRING"};
+	};
+
+	class VBR_GetStoredVehiclesResponse
+	{
+		module = "VirtualBoatRack";
+		parameters[] = {"ARRAY"};
+	};
+
+	class VBR_RetrieveVehicleRequest
+	{
+		module = "VirtualBoatRack";
+		parameters[] = {"STRING"};
+	};
+	class VBR_RetrieveVehicleResponse
+	{
+		module = "VirtualBoatRack";
+		parameters[] = {"STRING","STRING"};
+	};
+
+	class VBR_StoreVehicleRequest
+	{
+		module = "VirtualBoatRack";
+		parameters[] = {"STRING","STRING","STRING"};
+	};
+
+	class VBR_StoreVehicleResponse
+	{
+		module = "VirtualBoatRack";
+		parameters[] = {"STRING"};
+	};
+
+	class VBR_setVehicleNicknameResponse 
+	{
+		module = "VirtualBoatRack";
 		parameters[] = {"ARRAY"};
 	};	

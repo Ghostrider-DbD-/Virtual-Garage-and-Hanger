@@ -5,7 +5,7 @@
 	Description: Sets both the global variable holding the vehicle name and a local variable on the vehicle
 	TODO: 
  */
- private _display = uiNameSpace getVariable ["VirtualHangerDialog", displayNull];
+ private _display = uiNameSpace getVariable ["VirtualBoatRackDialog", displayNull];
  private _listBox = _display displayCtrl 1501;
  private _index = lbCurSel 1501;
  private _vehicle = localVehicles select _index;

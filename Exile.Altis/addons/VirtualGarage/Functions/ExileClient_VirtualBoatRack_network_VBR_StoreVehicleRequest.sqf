@@ -8,14 +8,14 @@
 */
 private ["_display","_flag","_ownerUID","_level","_vehicleLimit","_storedVehiclesCount","_NearByVehiclesList","_selectedSel","_VehNetId"];
 disableSerialization;
-_display = uiNameSpace getVariable ["VirtualHangerDialog", displayNull];
+_display = uiNameSpace getVariable ["VirtualBoatRackDialog", displayNull];
 _ownerUID = getPlayerUID player;
 if (true) then {
   _NearByVehiclesList = _display displayCtrl 1501;
   _selectedSel = lbCurSel _NearByVehiclesList;
   _VehNetId = _NearByVehiclesList lbData _selectedSel;
-  diag_log format["ExileClient_VirtualHanger_StoreVehicleRequest: _display = %1 | _selectedSel = %2 | _VehNetId = %3",_display,_selectedSel,_VehNetId];
-  ["VH_StoreVehicleRequest",[_VehNetId,_ownerUID,VG_vehicleName]] call ExileClient_system_network_send;
+  //diag_log format["ExileClient_VirtualHanger_StoreVehicleRequest: _display = %1 | _selectedSel = %2 | _VehNetId = %3",_display,_selectedSel,_VehNetId];
+  ["VBR_StoreVehicleRequest",[_VehNetId,_ownerUID,VG_vehicleName]] call ExileClient_system_network_send;
 }
 else
 {

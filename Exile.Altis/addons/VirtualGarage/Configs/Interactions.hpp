@@ -14,3 +14,19 @@
 			};
 		};
 	};
+
+	class VirtualBoatRack 
+	{
+		targetType = 2;
+		target = "Land_Destroyer_01_Boat_Rack_01_F";
+
+		class Actions
+		{
+			class AccessVirtualBoatRack: ExileAbstractAction
+			{
+				title = "Access Virtual Boat Rack";
+				condition = "true";
+				action = "call ExileClient_VirtualBoatRack_AccessBoatRack";
+			};
+		};		
+	};

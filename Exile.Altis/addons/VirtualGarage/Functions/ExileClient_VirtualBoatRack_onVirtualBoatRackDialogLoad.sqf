@@ -9,7 +9,7 @@
 
 private ["_display","_VirtCtrls","_hide","_setLoadingText","_progressBar","_curLoadingBarPos","_progressBar","_loadingCtrls","_VirtGarageStoredVehiclesTitle","_VirtGarageStoredVehiclesTitle","_VirtGarageNearbyVehiclesTitle"];
 disableSerialization;
-_display = uiNameSpace getVariable ["VirtualHangerDialog", displayNull];
+_display = uiNameSpace getVariable ["VirtualBoatRackDialog", displayNull];
 _VirtCtrls = [1100,1101,1102,1105,1600,1500,1501,1200,1106,1608,1107,1606];
   {
     _hide = (_display displayCtrl _x);
@@ -46,5 +46,5 @@ _VirtGarageTitle = (_display displayCtrl 1101);
 _VirtGarageTitle ctrlSetStructuredText parseText Format["<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>VIRTUAL HANGER</t>"];
 _VirtGarageNearbyVehiclesTitle = (_display displayCtrl 1102);
 _VirtGarageNearbyVehiclesTitle ctrlSetStructuredText parseText Format["<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>NEARBY VEHICLES</t>"];
-call ExileClient_VirtualHanger_GetNearbyVehicles;
-call ExileClient_VirtualHanger_network_VH_GetStoredVehiclesRequest;
+call ExileClient_VirtualBoatRack_GetNearbyVehicles;
+call ExileClient_VirtualBoatRack_network_VBR_GetStoredVehiclesRequest;

@@ -2,14 +2,14 @@
 
  	Name: VirtualGarage_Client_Dialog.hpp
  	Author(s): Shix
-  Copyright (c) 2016 Shix
-  Description: Dialog file for Virtual Garage
-
+  	Copyright (c) 2016 Shix
+  	Description: Dialog file for Virtual Boat Racks
+	Modified by Ghostrider-GRG
 */
-class VirtualGarageDialog
+class VirtualBoatRackDialog
 {
     idd = 0720;
-    onLoad = "uiNamespace setVariable ['VirtualGarageDialog', _this select 0]; []spawn ExileClient_VirtualGarage_onVirtualGarageDialogLoad;";
+    onLoad = "uiNamespace setVariable ['VirtualBoatRackDialog', _this select 0]; []spawn ExileClient_VirtualBoatRack_onVirtualBoatRackDialogLoad;";
     movingenable=false;
 	class Controls
 	{
@@ -91,28 +91,29 @@ class VirtualGarageDialog
         	h = 0.954 * safezoneH;
             colorBackground[] = {0.102,0.102,0.102,1};
         };
-		/*
+
         class VirtGarageCloseText: VirtGarageRscStructuredText
         {
         	idc = 1105;
-            //text = "<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>CLOSE</t>";
-			text = "CLOSE";
+            text = "<t color='#00b2cd' font='OrbitronLight' size='1.5' valign='middle' align='center' shadow='0'>CLOSE</t>";
+			//text = "CLOSE";
         	x = 0.407164 * safezoneW + safezoneX;
         	y = 0.885 * safezoneH + safezoneY;
         	w = 0.185671 * safezoneW;
         	h = 0.055 * safezoneH;
         };
-		*/
+
         class VirtGarageCloseBtn: VirtGarageRscButton
         {
         	idc = 1600;
            //text = "<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>CLOSE</t>";
-			text = "CLOSE";			
+			//text = "CLOSE";			
         	x = 0.407164 * safezoneW + safezoneX;
         	y = 0.880 * safezoneH + safezoneY;
         	w = 0.185671 * safezoneW;
         	h = 0.055 * safezoneH;
             colorBackground[] = {0,0,0,0};
+			//colorShadow[]	= {0.1,0.1,0.1,0.1};			
             colorBackgroundActive[] ={1,1,1,0.05};
             colorFocused[] ={1,1,1,0};
             onButtonClick = "((ctrlParent (_this select 0)) closeDisplay 0720);";
@@ -125,7 +126,8 @@ class VirtualGarageDialog
         	w = 0.237247 * safezoneW;
         	h = 0.792 * safezoneH;
           style = 530;
-          onLBSelChanged = "call ExileClient_VirtualGarage_onStoredVehiclesListSelChanged";
+          onLBSelChanged = "call ExileClient_VirtualBoatRack_onStoredVehiclesListSelChanged";
+		  onSetFocus = "call ExileClient_VirturalBoatRack_hideVehicleNameEditor";
         };
         class VirtGarageNearVehiclesList: VirtGarageRscListbox
         {
@@ -135,13 +137,14 @@ class VirtualGarageDialog
         	w = 0.237247 * safezoneW;
         	h = 0.792 * safezoneH;
           style = 530;
-          onLBSelChanged = "call ExileClient_VirtualGarage_onNearByVehiclesListSelChanged";
+          onLBSelChanged = "call ExileClient_VirtualBoatRack_onNearByVehiclesListSelChanged";
+		  onSetFocus = "call ExlieClient_VirtualBoatRack_showVehiclNameEditor";		  
         };
         class VirtGarageCarPic: VirtGarageRscPicture
         {
         	idc = 1200;
         	//text = "#(argb,8,8,3)color(1,1,1,1)";
-			text = "picture";
+			text ="\A3\EditorPreviews_F_Exp\Data\CfgVehicles\Land_Addon_05_F.jpg";
         	x = 0.407164 * safezoneW + safezoneX;
         	y = 0.148 * safezoneH + safezoneY;
         	w = 0.185671 * safezoneW;
@@ -163,35 +166,57 @@ class VirtualGarageDialog
             w = 0.402288 * safezoneW;
             h = 0.055 * safezoneH;
         };
-
+		
+        class VirtGarageStoreBtnText: VirtGarageRscStructuredText
+        {
+        	idc = 1106;
+			// SOTRE
+        	text = "<t color='#00b2cd' font='OrbitronLight' size='1.5' valign='middle' align='center' shadow='0'>STORE</t>"; 
+			x = 0.57 * safezoneW + safezoneX;
+			y = 0.588 * safezoneH + safezoneY;
+			w = 0.1 * safezoneW;
+			h = 0.055 * safezoneH;
+        };
+		
         class VirtGarageStoreBtn: VirtGarageRscButton
         {
         	idc = 1608;
-        	colorBackgroundActive[] = {1,1,1,0.05};
-        	colorFocused[] = {1,1,1,0};
-			//text = "<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>STORE</t>"; //--- ToDo: Localize;
-			text = "STORE";
-        	x = 0.407212 * safezoneW + safezoneX;
-        	y = 0.39 * safezoneH + safezoneY;
-        	w = 0.185671 * safezoneW;
-        	h = 0.055 * safezoneH;
+			// for STORE function
+			x = 0.57 * safezoneW + safezoneX;
+			y = 0.588 * safezoneH + safezoneY;
+			w = 0.1 * safezoneW;
+			h = 0.055 * safezoneH;
         	colorBackground[] = {0,0,0,0};
-          onButtonClick = "call ExileClient_VirtualGarage_network_StoreVehicleRequest";
+			//colorShadow[]	= {0.1,0.1,0.1,0.1};
+            colorBackgroundActive[] ={1,1,1,0.05};
+            colorFocused[] ={1,1,1,0};			
+          	onButtonClick = "call ExileClient_VirtualBoatRack_network_VBR_StoreVehicleRequest";
         };
+		
+        class VirtGarageRetrieveBtnText: VirtGarageRscStructuredText
+        {
+        	idc = 1107;
 
+        	text = "<t color='#00b2cd' font='OrbitronLight' size='1.5' valign='middle' align='center' shadow='0'>RETRIEVE</t>"; 
+			//text = "RETRIEVE";
+			x = 0.36 * safezoneW + safezoneX;
+			y = 0.588 * safezoneH + safezoneY;
+			w = 0.15 * safezoneW;
+			h = 0.055 * safezoneH;	
+        };
+		
         class VirtGarageRetrieveBtn: VirtGarageRscButton
         {
         	idc = 1606;
-        	colorBackgroundActive[] = {1,1,1,0.05};
-        	colorFocused[] = {1,1,1,0};
-			//text = "<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>RETRIEVE</t>"; //--- ToDo: Localize;			
-			text = "RETRIEVE";
-			x = 0.408125 * safezoneW + safezoneX;
-			y = 0.584 * safezoneH + safezoneY;
-			w = 0.185671 * safezoneW;
-			h = 0.0550001 * safezoneH;			
+			x = 0.365 * safezoneW + safezoneX;
+			y = 0.588 * safezoneH + safezoneY;
+			w = 0.15 * safezoneW;
+			h = 0.055 * safezoneH;			
         	colorBackground[] = {0,0,0,0};
-            onButtonClick = "call ExileClient_VirtualGarage_network_RetrieveVehicleRequest";
+			//colorShadow[] = {0.1,0.1,0.1,0.1};
+            colorBackgroundActive[] ={1,1,1,0.05};
+            colorFocused[] ={1,1,1,0};			
+            onButtonClick = "call ExileClient_VirtualBoatRack_network_VBR_RetrieveVehicleRequest";
         };
 		class enterVehicleName: VirtGarageRscEdit
 		{
@@ -200,20 +225,67 @@ class VirtualGarageDialog
 			y = 0.486 * safezoneH + safezoneY;
 			w = 0.18375 * safezoneW;
 			h = 0.042 * safezoneH;
+			text = "";
 			colorText[] = {1,1,1,1};
 			colorBackground[] = {0,0,0,0.1};
-			onKeyUp = "call VG_client_update_vehicleName";
+			onKeyUp = "call ExileClient_VirtualBoatRack_updateVehicleName";
 		};
 		class editLabel: VirtGarageRscStructuredText
 		{
 			idc = 1020;
-			text = "Vehicle Name"; //--- ToDo: Localize;
+			text = "Enter Nick Name"; 
 			x = 0.39 * safezoneW + safezoneX;
 			y = 0.486 * safezoneH + safezoneY;
 			w = 0.0984375 * safezoneW;
 			h = 0.056 * safezoneH;
 			colorText[] = {1,1,1,1};
 			colorBackground[] = {0,0,0,0};
+		};	
+		class displayVehicleName: VirtGarageRscStructuredText
+		{
+			idc = 1401;
+			x = 0.480312 * safezoneW + safezoneX;
+			y = 0.486 * safezoneH + safezoneY;
+			w = 0.18375 * safezoneW;
+			h = 0.042 * safezoneH;
+			text = "";
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+		};
+		class displayVehiclNameLabel: VirtGarageRscStructuredText
+		{
+			idc = 1021;
+			text = "Nick Name"; 
+			x = 0.39 * safezoneW + safezoneX;
+			y = 0.486 * safezoneH + safezoneY;
+			w = 0.0984375 * safezoneW;
+			h = 0.056 * safezoneH;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+		};			
+		class selectNickName: VirtGarageRscButton
+		{
+			idc = 1601;
+			text = "Set Vehicle Nickname"; 
+			x = 0.55 * safezoneW + safezoneX;
+			y = 0.533 * safezoneH + safezoneY;
+			w = 0.128906 * safezoneW;
+			h = 0.033 * safezoneH;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};	
+			//colorShadow[] = {0.1,0.1,0.1,0.1};			
+            colorBackgroundActive[] ={1,1,1,0.05};
+            colorFocused[] ={1,1,1,0};				
+			onButtonClick = "call ExileClient_VirtualBoatRack_setVehicleNickname";	
+		};
+		class directions: VirtGarageRscStructuredText
+		{
+			idc = 1103;
+			text = "Select a Vehicle to Store or Pull from the Boat Rack"; 
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.221719 * safezoneW;
+			h = 0.055 * safezoneH;
 		};		
     };
 };

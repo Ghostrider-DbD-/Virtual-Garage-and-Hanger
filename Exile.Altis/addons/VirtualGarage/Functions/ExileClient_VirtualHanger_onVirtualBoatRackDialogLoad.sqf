@@ -47,4 +47,4 @@ _VirtGarageTitle ctrlSetStructuredText parseText Format["<t color='#00b2cd' font
 _VirtGarageNearbyVehiclesTitle = (_display displayCtrl 1102);
 _VirtGarageNearbyVehiclesTitle ctrlSetStructuredText parseText Format["<t color='#00b2cd' font='OrbitronLight' size='2' valign='middle' align='center' shadow='0'>NEARBY VEHICLES</t>"];
 call ExileClient_VirtualHanger_GetNearbyVehicles;
-call ExileClient_VirtualHanger_network_VH_GetStoredVehiclesRequest;
+call ExileClient_VirtualHanger_network_GetStoredVehiclesRequest;
