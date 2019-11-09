@@ -67,14 +67,15 @@ try
   _mags = magazinesAmmoCargo _vehicle;
   _cntns = _vehicle call ExileServer_util_getObjectContainerCargo;
   _position = getPos _vehicle;
-  _vector = getDir _vehicle; 
-  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12:%13:%14:%15", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns,_position,_vector,_nickName] call ExileServer_system_database_query_selectFull;
+  _vector = getDir _vehicle;
+  private _weaponsLoadout = [_vehicle] call RRR_getVehicleLoadouts;
 
-  //diag_log format[" <--> _tabs = %1 typename %2",_tabs, typeName _tabs];
-  //diag_log format[" <--> _itm = %1 typename %2",_itm, typeName _itm];
-  //diag_log format[" <--> _mags = %1 typename %2",_mags, typeName _mags];
-  //diag_log format[" <--> _wpn = %1 typename %2",_wpn, typeName _wpn];
-  //diag_log format[" <--> _cntrs = %1 typename %2",_cntns, typeName _cntns];
+  {
+    diag_log format["storeRequestedVehiclevg: _weaponsLoadout %1 = %2",_forEachIndex + 1,_x];
+  } forEach _weaponsLoadout;
+  
+  _vehicleID = format ["insertVehicleToVG:%1:%2:%3:%4:%5:%6:%7:%8:%9:%10:%11:%12:%13:%14:%15:%16", typeOf _vehicle,_ownerUID,_fuel,_damage,_vehicleHitpoints,_pincode,_txtr,_tabs,_itm,_wpn,_mags,_cntns,_position,_vector,_nickName,_weaponsLoadout] call ExileServer_system_database_query_selectFull;
+
  deleteVehicle _vehicle;
 
   [_sessionID,"StoreVehicleResponse",["true"]] call ExileServer_system_network_send_to;

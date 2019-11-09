@@ -1497,6 +1497,7 @@ class VirtGarageRscButtonMenuOK
 		1
 	};
 };
+
 class RscButtonMenuCancel
 {
 	idc = 2;
@@ -1506,6 +1507,7 @@ class RscButtonMenuCancel
 	};
 	text = "Cancel";
 };
+
 class VirtGarageRscControlsGroup
 {
 	deletable = 0;

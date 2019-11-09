@@ -35,7 +35,20 @@ _vehicleCntnr = _parameters select 11;
 _vehiclePosition = _parameters select 12;
 _vehicleVector = _parameters select 13;
 _vehNickName = _parameters select 14;
-//diag_log format["ExileServer_VirtualGarage_network_SpawnRequestedVehicle: _vehNickName = %1",_vehNickName];
+diag_log format["ExileServer_VirtualGarage_network_spawnRequestedVehicle: _parameters = %1",_parameters];
+//_weaponsLoadout = _parameters select 15;
+private _vehicleLoadout = format["getVehicleLoadoutVG:%1",_vehicleDatabaseID] call ExileServer_system_database_query_selectSingle;
+diag_log format["VG_spawnVehicle: _weaponLoadout for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,typeName _vehicleLoadout];
+diag_log format["VG_spawnVehicle: _weaponLoadout / 0 / 0 for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,_vehicleLoadout select 0 select 0]; 
+diag_log format["VG_spawnVehicle: _weaponLoadout / 0 / 1 for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,_vehicleLoadout select 0 select 1]; 
+
+if (isNil "RRR_setVehicleLoadout") then 
+{
+	diag_log format["waiting for isNil RRR_setVehicleLoadout to be compiled"];
+	while {isNil "RRR_setVehicleLoadout"} do {uiSleep 1;};
+};
+
+diag_log format["ExileServer_VirtualGarage_network_SpawnRequestedVehicle: _vehicleLoadout = %1",_vehicleLoadout];
 try
 {
 	_playerObject = _sessionID call ExileServer_system_session_getPlayerObject;
@@ -62,15 +75,10 @@ try
 			throw "Position is not defined";
 	};
 	
-	//// Do this before spawning and configuring vehicle to avoid dupping caused by scripting errors.
-	format ["deleteVehicleFromVG:%1", _vehicleDatabaseID] call ExileServer_system_database_query_fireAndForget;	
 	_vehicleObject = [_vehicleClass, _position, 0, true, _pinCode] call ExileServer_object_vehicle_createPersistentVehicle;
-	/*
-	if !(typeName _vehicleVector == "ARRAY" && count _vehicleVector == 3) then
-	{
-		_vehicleVector = [0,0,0];
-	};	
-	*/
+	[_vehicleObject,_vehicleLoadout select 0] call RRR_setVehicleLoadout;
+	//[_vehicleObject,_weaponLoadouts select 0] call RRR_setVehicleLoadout;
+
 	_vehicleObject setDir _vehicleVector;
 	_vehicleObject setVariable ["ExileOwnerUID", (getPlayerUID _playerObject)];
 	_vehicleObject setVariable ["GRG_nickName",_vehNickname,true];
@@ -113,6 +121,11 @@ try
 			_vehicleObject setObjectTextureGlobal [ _forEachIndex, format["%1",_vehicleTextures select _forEachIndex] ];
 		}forEach _vehicleTextures;
 	};	
+
+
+
+	format ["deleteVehicleFromVG:%1", _vehicleDatabaseID] call ExileServer_system_database_query_fireAndForget;	
+
 	if (_GivePlayerPinCode == 1) then {
 		_msg = Format["Vehicle Successfully Retrieved PIC Code:%1",_pinCode];
 		[_sessionID, "notificationRequest", ["Success", [_msg]]] call ExileServer_system_network_send_to;
@@ -122,6 +135,7 @@ try
 		_msg = Format["Vehicle Successfully Retrieved"];
 		[_sessionID, "notificationRequest", ["Success", [_msg]]] call ExileServer_system_network_send_to;
 	};
+
 	_vehicleObject call ExileServer_object_vehicle_database_insert;
 	_vehicleObject call ExileServer_object_vehicle_database_update;
 	[_sessionID, "RetrieveVehicleResponse", ["true",netId _vehicleObject]] call ExileServer_system_network_send_to;

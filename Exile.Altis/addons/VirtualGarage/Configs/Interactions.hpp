@@ -12,6 +12,12 @@
 				condition = "true";
 				action = "call ExileClient_VirtualHanger_AccessHanger";
 			};
+			class SetNickname: ExileAbstractAction 
+			{
+			  title = "Change Nickname";
+			  condition = "true";
+			  action = "call ExileClient_Nicknames_ChangeNickname";
+			};			
 		};
 	};
 
@@ -28,5 +34,12 @@
 				condition = "true";
 				action = "call ExileClient_VirtualBoatRack_AccessBoatRack";
 			};
+			class SetNickname: ExileAbstractAction 
+			{
+			  title = "Change Nickname";
+			  condition = "true";
+			  action = "call ExileClient_Nicknames_ChangeNickname";
+			};
+
 		};		
 	};

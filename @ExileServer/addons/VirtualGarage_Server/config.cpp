@@ -14,7 +14,7 @@ class CfgFunctions {
         class main {
             file="VirtualGarage_Server\bootstrap";
             class preInit {
-                preInit = 1;
+                //preInit = 1;
             };
             class postInit {
                 postInit = 1;

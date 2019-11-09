@@ -12,6 +12,8 @@
 private["_vehicleObject", "_vehicleID", "_position", "_vectorDirection", "_vectorUp", "_availableHitpoints", "_vehicleHitpoints", "_data", "_extDB2Message"];
 _vehicleObject = _this;
 _vehicleID = _vehicleObject getVariable ["ExileDatabaseID", -1];
+private _weaponsLoadout = [_vehicleObject] call RRR_getVehicleLoadouts;
+//diag_log format["ExileServer_object_vehicle_database_update: _vehicleObject %1 | _weaponsLoadout %2",_vehicleObject,_weaponsLoadout];
 if (_vehicleID > -1) then
 {
 	_position = getPosATL _vehicleObject;
@@ -47,6 +49,7 @@ if (_vehicleID > -1) then
 		_vehicleObject call ExileServer_util_getObjectContainerCargo,
 		_vehicleObject getVariable ["ExileMoney", 0],
 		_vehicleObject getVariable ["GRG_nickName",""],
+		_weaponsLoadout,
 		_vehicleID 
 	];
 	_extDB2Message = ["updateVehicle", _data] call ExileServer_util_extDB2_createMessage;

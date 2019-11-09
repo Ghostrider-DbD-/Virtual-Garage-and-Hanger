@@ -13,8 +13,11 @@ private ['_code', '_function', '_file'];
     _code = '';
     _function = _x select 0;
     _file = _x select 1;
-    _code = compileFinal (preprocessFileLineNumbers _file);
-    missionNamespace setVariable [_function, _code];;
+    if !(_function isEqualTo "") then 
+    {
+        _code = compileFinal (preprocessFileLineNumbers _file);
+        missionNamespace setVariable [_function, _code];
+    };
 }
 forEach
 [
@@ -30,12 +33,10 @@ forEach
   ['ExileClient_VirtualGarage_onStoredVehiclesListSelChanged', 'addons\VirtualGarage\Functions\ExileClient_VirtualGarage_onStoredVehiclesListSelChanged.sqf'],
   ['ExileClient_VirtualGarage_onVirtualGarageDialogLoad', 'addons\VirtualGarage\Functions\ExileClient_VirtualGarage_onVirtualGarageDialogLoad.sqf'],
   ['ExileClient_VirtualGarage_VehicleDraw3DIcon', 'addons\VirtualGarage\Functions\ExileClient_VirtualGarage_VehicleDraw3DIcon.sqf'],
-
   ['ExileClient_VirtualGarage_updateVehicleName','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_updateVehicleName.sqf'],
   ['ExileClient_VirturalGarage_hideVehicleNameEditor','addons\VirtualGarage\Functions\ExileClient_VirturalGarage_hideVehicleNameEditor.sqf'],
   ['ExlieClient_VirtualGarage_showVehiclNameEditor','addons\VirtualGarage\Functions\ExlieClient_VirtualGarage_showVehiclNameEditor.sqf'],
   ['ExileClient_VirtualGarage_setVehicleNickname','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_setVehicleNickname.sqf'],
-  ['ExileClient_VirtualGarage_network_setVehicleNicknameRequest','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_network_setVehicleNicknameRequest.sqf'],
   ['ExileClient_VirtualGarage_network_setVehicleNicknameResponse','addons\VirtualGarage\Functions\ExileClient_VirtualGarage_network_setVehicleNicknameResponse.sqf'],
   
   //  Additional Functions for Virtual Hanger
@@ -50,13 +51,10 @@ forEach
   ['ExileClient_VirtualHanger_network_VH_StoreVehicleResponse', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_VH_StoreVehicleResponse.sqf'],  
   ['ExileClient_VirtualHanger_network_VH_RetrieveVehicleResponse', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_VH_RetrieveVehicleResponse.sqf'],   
   ['ExileClient_VirtualHanger_AccessHanger', 'addons\VirtualGarage\Functions\ExileClient_VirtualHanger_AccessHanger.sqf'],
-    
   ['ExileClient_VirtualHanger_updateVehicleName','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_updateVehicleName.sqf'],
   ['ExileClient_VirturalHanger_hideVehicleNameEditor','addons\VirtualGarage\Functions\ExileClient_VirturalHanger_hideVehicleNameEditor.sqf'],
   ['ExlieClient_VirtualHanger_showVehiclNameEditor','addons\VirtualGarage\Functions\ExlieClient_VirtualHanger_showVehiclNameEditor.sqf'],
   ['ExileClient_VirtualHanger_setVehicleNickname','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_setVehicleNickname.sqf'],
-  ['ExileClient_VirtualHanger_network_VH_setVehicleNicknameRequest','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_VH_setVehicleNicknameRequest.sqf'],
-  ['ExileClient_VirtualHanger_network_VH_setVehicleNicknameResponse','addons\VirtualGarage\Functions\ExileClient_VirtualHanger_network_VH_setVehicleNicknameResponse.sqf'],
 
   // Functions for Virtual Boat Rack
   ['ExileClient_VirtualBoatRack_GetNearbyVehicles', 'addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_GetNearbyVehicles.sqf'],
@@ -70,12 +68,18 @@ forEach
   ['ExileClient_VirtualBoatRack_network_VBR_StoreVehicleResponse', 'addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_network_VBR_StoreVehicleResponse.sqf'],  
   ['ExileClient_VirtualBoatRack_network_VBR_RetrieveVehicleResponse', 'addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_network_VBR_RetrieveVehicleResponse.sqf'],   
   ['ExileClient_VirtualBoatRack_AccessBoatRack', 'addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_AccessBoatRack.sqf'],
-    
   ['ExileClient_VirtualBoatRack_updateVehicleName','addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_updateVehicleName.sqf'],
   ['ExileClient_VirturalBoatRack_hideVehicleNameEditor','addons\VirtualGarage\Functions\ExileClient_VirturalBoatRack_hideVehicleNameEditor.sqf'],
   ['ExlieClient_VirtualBoatRack_showVehiclNameEditor','addons\VirtualGarage\Functions\ExlieClient_VirtualBoatRack_showVehiclNameEditor.sqf'],
   ['ExileClient_VirtualBoatRack_setVehicleNickname','addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_setVehicleNickname.sqf'],
-  ['ExileClient_VirtualBoatRack_network_VBR_setVehicleNicknameRequest','addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_network_VBR_setVehicleNicknameRequest.sqf'],
-  ['ExileClient_VirtualBoatRack_network_VBR_setVehicleNicknameResponse','addons\VirtualGarage\Functions\ExileClient_VirtualBoatRack_network_VBR_setVehicleNicknameResponse.sqf']
+
+  ["ExileClient_Nicknames_updateVehicleName","addons\VirtualGarage\Functions\ExileClient_Nicknames_updateVehicleName.sqf"],
+  ["ExileClient_Nicknames_onNearByVehiclesListSelChanged","addons\VirtualGarage\Functions\ExileClient_Nicknames_onNearByVehiclesListSelChanged.sqf"],
+  ["ExileClient_Nicknames_onChangeVehicleNicknameDialogLoad","addons\VirtualGarage\Functions\ExileClient_Nicknames_onChangeVehicleNicknameDialogLoad.sqf"],
+  ["ExileClient_Nicknames_GetNearbyVehicles","addons\VirtualGarage\Functions\ExileClient_Nicknames_GetNearbyVehicles.sqf"],
+  ["ExileClient_Nicknames_ChangeNickname","addons\VirtualGarage\Functions\ExileClient_Nicknames_ChangeNickname.sqf"],
+  ["ExileClient_Nicknames_setVehicleNicknameRequest","addons\VirtualGarage\Functions\ExileClient_Nicknames_setVehicleNicknameRequest.sqf"],
+
+  ["",""]
 
 ];

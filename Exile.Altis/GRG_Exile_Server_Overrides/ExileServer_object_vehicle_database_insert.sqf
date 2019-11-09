@@ -14,6 +14,7 @@ _vehicleObject = _this;
 _position = getPosATL _vehicleObject;
 _vectorDirection = vectorDir _vehicleObject;
 _vectorUp = vectorUp _vehicleObject;
+private _weaponsLoadout = [_vehicleObject] call RRR_getVehicleLoadouts;
 _data =
 [
 	typeOf _vehicleObject,
@@ -29,7 +30,8 @@ _data =
 	_vectorUp select 1,
 	_vectorUp select 2,
 	_vehicleObject getVariable ["ExileAccessCode",""],
-	_vehicleObject getVariable ["GRG_nickName",""]
+	_vehicleObject getVariable ["GRG_nickName",""],
+	_weaponsLoadout
 ];
 _extDB2Message = ["insertVehicle", _data] call ExileServer_util_extDB2_createMessage;
 _vehicleID = _extDB2Message call ExileServer_system_database_query_insertSingle;
