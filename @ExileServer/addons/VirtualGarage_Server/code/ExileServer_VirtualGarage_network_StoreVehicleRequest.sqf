@@ -67,7 +67,7 @@ try
   _mags = magazinesAmmoCargo _vehicle;
   _cntns = _vehicle call ExileServer_util_getObjectContainerCargo;
   _position = getPos _vehicle;
-  _vector = getDir _vehicle;
+  _vector =[vectorDir _vehicle, vectorUp _vehicle];  //  getDir _vehicle
   private _weaponsLoadout = [_vehicle] call RRR_getVehicleLoadouts;
 
   {

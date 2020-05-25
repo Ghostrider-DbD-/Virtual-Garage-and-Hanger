@@ -22,7 +22,7 @@ try
   };
   _VehicleInfo = format ["RetrieveVehicle:%1", _vehicleDBID] call ExileServer_system_database_query_selectFull;
   //(_VehicleInfo select 0) params["_vehClass","_accountUID","_vehFuel","_vehDamage","_vehHitPoints","_vehPinCode","_vehTextures","_vehMoney","_vehItm","_vehWpn","_vehMag","_vehCntnr","_vehPosn","_vehVector","_vehNickname"];
-  diag_log format["ExileServer_VirtualGarage_network_RetrieveVehicleRequest::  _VehicleInfo = %1",_VehicleInfo];
+  //diag_log format["ExileServer_VirtualGarage_network_RetrieveVehicleRequest::  _VehicleInfo = %1",_VehicleInfo];
   
   _vehClass = (_VehicleInfo select 0) select 1;
   _vehFuel = (_VehicleInfo select 0) select 3;

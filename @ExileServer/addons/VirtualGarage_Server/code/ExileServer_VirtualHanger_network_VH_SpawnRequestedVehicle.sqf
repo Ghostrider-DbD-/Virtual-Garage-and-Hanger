@@ -69,7 +69,8 @@ try
 		_vehicleVector = [0,0,0];
 	};		
 	*/
-	_vehicleObject setDir _vehicleVector;
+	//_vehicleObject setDir _vehicleVector;
+	_vehicleObject setVectorDirAndUp _vehicleVector;
 	_vehicleObject setVariable ["ExileOwnerUID", (getPlayerUID _playerObject)];
 	_vehicleObject setVariable ["GRG_nickName",_vehNickname,true];
 	_vehSpawnState = getNumber (missionconfigfile >> "VirtualGarageSettings" >> "VirtualGarage_VehicleSpawnState");

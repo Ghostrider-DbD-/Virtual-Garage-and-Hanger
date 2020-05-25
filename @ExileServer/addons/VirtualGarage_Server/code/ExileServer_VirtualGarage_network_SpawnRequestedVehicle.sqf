@@ -35,20 +35,20 @@ _vehicleCntnr = _parameters select 11;
 _vehiclePosition = _parameters select 12;
 _vehicleVector = _parameters select 13;
 _vehNickName = _parameters select 14;
-diag_log format["ExileServer_VirtualGarage_network_spawnRequestedVehicle: _parameters = %1",_parameters];
+//diag_log format["ExileServer_VirtualGarage_network_spawnRequestedVehicle: _parameters = %1",_parameters];
 //_weaponsLoadout = _parameters select 15;
 private _vehicleLoadout = format["getVehicleLoadoutVG:%1",_vehicleDatabaseID] call ExileServer_system_database_query_selectSingle;
-diag_log format["VG_spawnVehicle: _weaponLoadout for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,typeName _vehicleLoadout];
-diag_log format["VG_spawnVehicle: _weaponLoadout / 0 / 0 for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,_vehicleLoadout select 0 select 0]; 
-diag_log format["VG_spawnVehicle: _weaponLoadout / 0 / 1 for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,_vehicleLoadout select 0 select 1]; 
+//diag_log format["VG_spawnVehicle: _weaponLoadout for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,typeName _vehicleLoadout];
+//diag_log format["VG_spawnVehicle: _weaponLoadout / 0 / 0 for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,_vehicleLoadout select 0 select 0]; 
+//diag_log format["VG_spawnVehicle: _weaponLoadout / 0 / 1 for vehicle %1 of displayName %2 = %3 with typeName = %4",_vehicleClass,getText(configFile >> "CfgVehicles" >> _vehicleClass >> "displayName"),_vehicleLoadout,_vehicleLoadout select 0 select 1]; 
 
 if (isNil "RRR_setVehicleLoadout") then 
 {
-	diag_log format["waiting for isNil RRR_setVehicleLoadout to be compiled"];
+	//diag_log format["waiting for isNil RRR_setVehicleLoadout to be compiled"];
 	while {isNil "RRR_setVehicleLoadout"} do {uiSleep 1;};
 };
 
-diag_log format["ExileServer_VirtualGarage_network_SpawnRequestedVehicle: _vehicleLoadout = %1",_vehicleLoadout];
+//diag_log format["ExileServer_VirtualGarage_network_SpawnRequestedVehicle: _vehicleLoadout = %1",_vehicleLoadout];
 try
 {
 	_playerObject = _sessionID call ExileServer_system_session_getPlayerObject;
@@ -79,7 +79,8 @@ try
 	[_vehicleObject,_vehicleLoadout select 0] call RRR_setVehicleLoadout;
 	//[_vehicleObject,_weaponLoadouts select 0] call RRR_setVehicleLoadout;
 
-	_vehicleObject setDir _vehicleVector;
+	//_vehicleObject setDir _vehicleVector;
+	_vehicleObject setVectorDirAndUp _vehicleVector;
 	_vehicleObject setVariable ["ExileOwnerUID", (getPlayerUID _playerObject)];
 	_vehicleObject setVariable ["GRG_nickName",_vehNickname,true];
 	_vehSpawnState = getNumber (missionconfigfile >> "VirtualGarageSettings" >> "VirtualGarage_VehicleSpawnState");
