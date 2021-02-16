@@ -43,8 +43,14 @@ Server:
 pack the virtual_garage folder and put virtual_garage.pbo in @exileserver\addons
 
 Run \database\virtual_garage.sql to add the virtual garage table to the database for your server AFTER making a backup.
-
+Run \database\exileDBupdate to add a field for weapons loadouts to the vehicles table AFTER making a backup.
 Merge @ExileServer\extDB\sql_custom_v2\exile.ini with your existing extDB3 exile.ini (be sure to make a backup first).
+
+SPECIAL NOTES.
+
+The virtual garage / hanger / boatrack does require one set of functions from my rearm / repair / refuel scripts.
+If you have already installed that set of scripts you do not need to include the code listed in init.sqf to make virtualGarage run.
+
 
 
   
