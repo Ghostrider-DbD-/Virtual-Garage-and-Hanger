@@ -1,4 +1,9 @@
+/*
 
+    These are some objects I spawn in on Altis to allow users to access the virtual hanger.
+    They are provided as an example.
+    
+*/
 private _vehicles = [
 // The jetengine starter serves as a portal to the virtual hanger 
 // while the helipad as a spawn point.
